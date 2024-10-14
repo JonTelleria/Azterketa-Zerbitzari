@@ -1,0 +1,7 @@
+{% extends 'osakidetza/base.html' %} {% block content %}
+<ul>
+  {% for paziente in pazienteak %}
+  <li>{{ paziente }}</li>
+  {% endfor %}
+</ul>
+{% endblock %}
