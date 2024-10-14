@@ -3,9 +3,9 @@ from .models import Paziente, Mediku, Zita
 from .forms import PazienteForm, MedikuForm, ZitaForm, PazienteDeleteForm, MedikuDeleteForm
 from django.http import HttpResponse
 # Create your views here.
-def paziente_list(request):
-    pazienteZerrenda=Paziente.objects.all()
-    return render(request, 'osakidetza/paziente_list.html', {'paziente': pazienteZerrenda})
+def zita_list(request):
+    pazienteZerrenda=Zita.objects.all()
+    return render(request, 'osakidetza/zita_list.html', {'zita': pazienteZerrenda})
 
 def add_paziente(request):
     if request.method == 'POST':
@@ -62,3 +62,15 @@ def delete_mediku(request):
     else:
         form = MedikuDeleteForm()  
         return render(request, 'osakidetza/delete_mediku.html', {'formdeletemediku': form})
+    
+    
+def zita_esleitu(request):
+    if request.method == 'POST':
+        form = ZitaForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('base') 
+    else:
+        form = ZitaForm()
+        return render(request, 'osakidetza/zita_esleitu.html', {'formzita': form})
+    

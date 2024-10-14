@@ -11,7 +11,7 @@ class Paziente(models.Model):
     mugikorra = models.CharField(max_length=50)
     
     def __str__(self):
-        return f"Pertsona {self.id}  {self.izena} {self.abizena} {self.jaiotze_data} {self.emaila} {self.mugikorra}."
+        return f"{self.izena} {self.abizena} "
     
 class Mediku(models.Model):
     id = models.AutoField(primary_key=True)
@@ -20,7 +20,7 @@ class Mediku(models.Model):
     espezializazioa = models.CharField(max_length=100)
     
     def __str__(self):
-        return f"Pertsona {self.id}  {self.izena} {self.abizena} {self.espezializazioa}."
+        return f" {self.izena} {self.abizena} {self.espezializazioa}."
     
 class Zita(models.Model):
     zita_data = models.DateTimeField(default=timezone.now)
@@ -29,4 +29,4 @@ class Zita(models.Model):
     medikua = models.ForeignKey(Mediku, to_field='id', on_delete=models.CASCADE)
     
     def __str__(self):
-        return f"Pertsona {self.zita_data}  {self.oharra} {self.pazientea} {self.medikua}."
+        return f"{self.pazientea}-k {self.medikua} medikuarekin {self.zita_data} egunenan zita dauka. Gogoratu : {self.oharra} ."

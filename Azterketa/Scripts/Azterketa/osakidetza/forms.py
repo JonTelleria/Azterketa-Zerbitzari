@@ -16,7 +16,7 @@ class MedikuForm(forms.ModelForm):
 class ZitaForm(forms.ModelForm):    
     class Meta:        
         model=Zita        
-        fields=['zita_data','oharra','pazientea','medikua']
+        fields=['pazientea','medikua','zita_data','oharra']
         
 class PazienteDeleteForm(forms.ModelForm):
         class Meta:        
