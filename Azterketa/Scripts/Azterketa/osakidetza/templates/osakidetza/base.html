@@ -17,8 +17,8 @@
             <a href="{% url 'delete-paziente' %}">delete paziente</a>
             <a href="{% url 'delete-mediku' %}">delete mediku</a>
             <a href="{% url 'zita-esleitu' %}">zita esleitu</a>
-            {% comment %} <a href="{% url 'edit-paziente' pazienteak.izena %}">edit paziente</a> {% endcomment %}
-            
+           {% comment %}  <a href="{% url 'edit-paziente' paziente.id %}">edit paziente</a> 
+            <a href="{% url 'edit-mediku' mediku.id %}">edit mediku</a>  {% endcomment %}
         </h1>    
         
     </div>    

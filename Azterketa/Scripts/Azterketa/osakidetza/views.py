@@ -28,19 +28,42 @@ def add_mediku(request):
         return render(request, 'osakidetza/add_mediku.html', {'formmediku': form})
     
 def edit_paziente(request, id):
-    paziente = get_object_or_404(Paziente, izena=id)
+    paziente = Paziente.objects.filter(id=id)
+    
+    pazienteedit = Paziente.first()
+    
+    if not pazienteedit:
+        return render(request, 'error.html', {'message': 'No se encontró paciente'})
+
     if request.method == 'POST':
-        form = PazienteForm(request.POST, instance=paziente) 
-        if form.is_valid():  
-            form.save()  
-            return redirect('index')  
+        form = PazienteForm(request.POST, instance=pazienteedit)
+        if form.is_valid():
+            form.save()
+            return redirect('default')  
     else:
-        form = PazienteForm(instance=paziente)  
+        form = PazienteForm(instance=pazienteedit)
 
-    return render(request, 'osakidetza/edit_paziente.html', {'formeditpaziente': form, 'paziente': paziente})
+    return render(request, 'osakidetza/edit_paziente.html', {'formeditpaziente': form})
 
-def delete_paziente(request):
-   
+def edit_mediku(request, id):
+    mediku = Paziente.objects.filter(id=id)
+    
+    medikuedit = Paziente.first()
+    
+    if not medikuedit:
+        return render(request, 'error.html', {'message': 'No se encontró paciente'})
+
+    if request.method == 'POST':
+        form = MedikuForm(request.POST, instance=medikuedit)
+        if form.is_valid():
+            form.save()
+            return redirect('default')  
+    else:
+        form = MedikuForm(instance=medikuedit)
+
+    return render(request, 'osakidetza/edit_mediku.html', {'formeditmediku': form})
+
+def delete_paziente(request):   
     if request.method == 'POST':
         form = PazienteDeleteForm(request.POST)  
         if form.is_valid(): 
