@@ -7,13 +7,13 @@ class PazienteForm(forms.ModelForm):
         fields=['izena','abizena','jaiotze_data','emaila','mugikorra']
 
 
-class PertsonaForm(forms.ModelForm):    
+class MedikuForm(forms.ModelForm):    
     class Meta:        
         model=Mediku        
         fields=['izena','abizena','espezializazioa']
         
         
-class PertsonaForm(forms.ModelForm):    
+class ZitaForm(forms.ModelForm):    
     class Meta:        
-        model=Mediku        
+        model=Zita        
         fields=['zita_data','oharra','pazientea','medikua']

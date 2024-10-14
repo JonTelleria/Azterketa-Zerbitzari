@@ -1,0 +1,7 @@
+{% extends 'osakidetza/base.html' %} 
+{% block content %}
+    <form method="post">
+        {% csrf_token %} {{ formmediku.as_p }}
+        <button type="submit" class="btn btn-success">gorde</button>
+    </form>
+{% endblock %}
