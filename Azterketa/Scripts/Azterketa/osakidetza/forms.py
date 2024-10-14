@@ -17,3 +17,15 @@ class ZitaForm(forms.ModelForm):
     class Meta:        
         model=Zita        
         fields=['zita_data','oharra','pazientea','medikua']
+        
+class PazienteDeleteForm(forms.ModelForm):
+        class Meta:        
+            model=Paziente
+            fields=['paziente']  
+        paziente = forms.ModelChoiceField(queryset=Paziente.objects.all(), label="Select Paziente")
+        
+class MedikuDeleteForm(forms.ModelForm):
+        class Meta:        
+            model=Mediku
+            fields=['mediku']  
+        mediku = forms.ModelChoiceField(queryset=Mediku.objects.all(), label="Select mediku")
